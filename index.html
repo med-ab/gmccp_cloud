@@ -1,0 +1,34 @@
+<!doctype html>
+<html>
+
+<head>
+  <meta name='viewport' content='width=device-width'>
+  <script src='./react.min.js'></script>
+  <script src='./react-dom.min.js'></script>
+  <script src='./babel.min.js'></script>
+  <link rel='icon'
+    href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg'><text x='50%' y='50%' font-size='25' text-anchor='middle' alignment-baseline='middle'>📍</text></svg>">
+  <link rel="stylesheet" href="materialize.min.css">
+  <style>
+    body {
+      font-family: sans-serif;
+      font-weight: bolder;
+      display: flex;
+      justify-content: center;
+    }
+  </style>
+  <title>Tunisia Maps</title>
+</head>
+
+<body>
+  <script type='text/babel'>
+    ReactDOM.render(<div style={{margin:'0% 5%'}}>
+      <h1 style={{ fontSize: 'xx-large' }}>Explore <em>Tunisia</em></h1>
+      <iframe  style={{ borderRadius: '1vw',width:'100%',height:'50vh', filter: 'contrast(200%)' }} src={`https://maps.google.com/maps?q=Tunisia&output=embed`}></iframe>
+      <br /><div style={{ display: 'flex', flexWrap: 'wrap' }}>{['Ariana', 'Beja', 'Ben Arous', 'Bizerte', 'Gabes', 'Gafsa', 'Jendouba', 'Kairouan', 'Kasserine', 'Kebili', 'Kef', 'Mahdia', 'Manouba', 'Medenine', 'Monastir', 'Nabeul', 'Sfax', 'Sidi Bouzid', 'Siliana', 'Sousse', 'Tataouine', 'Tozeur', 'Tunis', 'Zaghouan'].map(o => <button onClick={() => {
+        var gmaps = document.querySelector('iframe');
+        gmaps.src = `https://maps.google.com/maps?q=Tunisia,${o}&output=embed`;
+        gmaps.contentWindow.location.reload();
+      }} style={{ width: '14%', margin: '0.5%' }}>{o}</button>)}</div>
+    </div>, document.querySelector('body'))
+  </script>
